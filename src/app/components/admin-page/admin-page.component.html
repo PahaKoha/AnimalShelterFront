@@ -1,2 +1,4 @@
 <p>admin-page works!</p>
-<button>Доббавить нового зверька</button>
+<button (click)="changeCreateNewPetWindowState()">Доббавить нового зверька</button>
+
+<app-create-new-pet-window *ngIf="isCreateNewPetWindowOpen()"></app-create-new-pet-window>
