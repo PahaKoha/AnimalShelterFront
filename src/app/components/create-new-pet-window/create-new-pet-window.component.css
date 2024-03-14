@@ -24,3 +24,14 @@
   padding: 5px;
   margin: 5px;
 }
+
+.button-group {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  margin: 5px;
+}
+
+.button-group button {
+  margin: 5px;
+}
