@@ -1,13 +1,15 @@
 <div class="main-container">
-  <div class="create-new-pet-window">
-    <h1>Добавьте нового питомца</h1>
-    <input placeholder="Кличка питомца">
-    <input placeholder="Возраст питомца">
-    <input placeholder="Пол питомца">
-    <input type="file" placeholder="Фото питомца">
-    <div class="button-group">
-      <button>Добавить</button>
-      <button (click)="changeCreateNewPetWindowState()">Закрыть</button>
+  <form [formGroup]="newPetFormGroup">
+    <div class="create-new-pet-window">
+      <h1>Добавьте нового питомца</h1>
+      <input formControlName="name" placeholder="Кличка питомца">
+      <input formControlName="age" placeholder="Возраст питомца">
+      <input formControlName="sex" placeholder="Пол питомца">
+      <input formControlName="petPicture" type="file" placeholder="Фото питомца">
+      <div class="button-group">
+        <button (click)="showInfoAboutPet()">Добавить</button>
+        <button (click)="changeCreateNewPetWindowState()">Закрыть</button>
+      </div>
     </div>
-  </div>
+  </form>
 </div>
