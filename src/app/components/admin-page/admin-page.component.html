@@ -1,5 +1,7 @@
-<p>admin-page works!</p>
-<button (click)="changeCreateNewPetWindowState()">Добавить нового зверька</button>
+<h2>Панель администрации сайта</h2>
+
+<button class="styled-red-button" (click)="changeCreateNewPetWindowState()">Добавить нового зверька</button>
+<button class="styled-red-button" (click)="changeDeleteWindowState()">Удалить нахуй 1 животное по id</button>
 
 <app-create-new-pet-window *ngIf="isCreateNewPetWindowOpen()"></app-create-new-pet-window>
 <app-delete-pet-window *ngIf="isCreateDeletePetWindowOpen()"></app-delete-pet-window>
