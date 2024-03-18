@@ -1,0 +1,38 @@
+.main-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.delete-pet-window {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  border: 1px solid;
+  width: 100%;
+  max-width: 500px;
+}
+
+.delete-pet-window input {
+  padding: 5px;
+  margin: 5px;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  margin: 5px;
+}
+
+.button-group button {
+  margin: 5px;
+}
+
