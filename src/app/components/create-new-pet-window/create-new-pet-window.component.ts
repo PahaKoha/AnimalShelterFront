@@ -20,6 +20,7 @@ export class CreateNewPetWindowComponent implements OnInit {
 
   newPetFormGroup!: FormGroup;
   file!: File;
+  imageUrl: string | undefined;
 
 
   ngOnInit(): void {
@@ -42,13 +43,13 @@ export class CreateNewPetWindowComponent implements OnInit {
 
   onFileSelected(event: any) {
     this.file = event.target.files[0];
-    // const file: File = event.target.files[0];
-    // console.log(event.target.files[0]);
-    // const reader = new FileReader();
-    // reader.onload = (e: any) => {
-    //   this.imageUrl = e.target.result;
-    // };
-    // reader.readAsDataURL(file);
+    const file: File = event.target.files[0];
+    console.log(event.target.files[0]);
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.imageUrl = e.target.result;
+    };
+    reader.readAsDataURL(file);
   }
 
   createNewPet(): void {
@@ -57,7 +58,7 @@ export class CreateNewPetWindowComponent implements OnInit {
     formData.append('json', JSON.stringify(this.newPetFormGroup.value));
     this.createNewPetWindowService.createNewPet(formData).subscribe({
       next: (response) => {
-        console.log(response);
+        console.log(response.message);
       },
       error: (error) => {
         console.log(error);
