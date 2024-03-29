@@ -19,7 +19,7 @@ export class CreateNewPetWindowComponent implements OnInit {
   }
 
   newPetFormGroup!: FormGroup;
-  imageUrl: string | undefined;
+  file!: File;
 
 
   ngOnInit(): void {
@@ -27,7 +27,8 @@ export class CreateNewPetWindowComponent implements OnInit {
       name: ['', Validators.required],
       age: ['', Validators.required],
       sex: ['', Validators.required],
-      petPicture: ['', Validators.required]
+      weight: ['', Validators.required],
+      height: ['', Validators.required]
     })
   }
 
@@ -40,11 +41,27 @@ export class CreateNewPetWindowComponent implements OnInit {
   }
 
   onFileSelected(event: any) {
-    const file: File = event.target.files[0];
-    const reader = new FileReader();
-    reader.onload = (e: any) => {
-      this.imageUrl = e.target.result;
-    };
-    reader.readAsDataURL(file);
+    this.file = event.target.files[0];
+    // const file: File = event.target.files[0];
+    // console.log(event.target.files[0]);
+    // const reader = new FileReader();
+    // reader.onload = (e: any) => {
+    //   this.imageUrl = e.target.result;
+    // };
+    // reader.readAsDataURL(file);
+  }
+
+  createNewPet(): void {
+    let formData = new FormData();
+    formData.append('image', this.file);
+    formData.append('json', JSON.stringify(this.newPetFormGroup.value));
+    this.createNewPetWindowService.createNewPet(formData).subscribe({
+      next: (response) => {
+        console.log(response);
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    })
   }
 }

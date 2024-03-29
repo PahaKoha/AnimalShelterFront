@@ -1,4 +1,6 @@
 import {Injectable} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +9,7 @@ export class CreateNewPetWindowService {
 
   private windowState: boolean = false;
 
-  constructor() {
+  constructor(private httpClient: HttpClient) {
   }
 
   isWindowOpen(): boolean {
@@ -17,4 +19,9 @@ export class CreateNewPetWindowService {
   changeWindowState(): void {
     this.windowState = !this.windowState;
   }
+
+  createNewPet(formData: FormData): Observable<any> {
+    return this.httpClient.put('http://localhost:8080/api/save-animal', formData);
+  }
+
 }

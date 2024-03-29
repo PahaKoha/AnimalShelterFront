@@ -5,15 +5,17 @@
       <input formControlName="name" placeholder="Кличка питомца">
       <input formControlName="age" placeholder="Возраст питомца">
       <input formControlName="sex" placeholder="Пол питомца">
-      <input formControlName="petPicture" type="file" placeholder="Фото питомца" (change)="onFileSelected($event)">
+      <input formControlName="weight" placeholder="Вес питомца">
+      <input formControlName="height" placeholder="Размер питомца">
+      <input type="file" placeholder="Фото питомца" (change)="onFileSelected($event)">
       <div class="button-group">
-        <button (click)="showInfoAboutPet()">Добавить</button>
+        <button (click)="createNewPet()">Добавить</button>
         <button (click)="changeCreateNewPetWindowState()">Закрыть</button>
       </div>
     </div>
   </form>
 </div>
 
-<div *ngIf="imageUrl">
-  <img src="{{imageUrl}}" alt="Photo">
-</div>
+<!--<div *ngIf="imageUrl">-->
+<!--  <img src="{{imageUrl}}" alt="Photo">-->
+<!--</div>-->
