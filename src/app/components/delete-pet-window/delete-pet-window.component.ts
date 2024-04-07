@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {DeletePetWindowService} from "../../services/delete-pet-window.service";
+import {response} from "express";
 
 @Component({
   selector: 'app-delete-pet-window',
@@ -30,5 +31,16 @@ export class DeletePetWindowComponent {
 
   showDeletedPet(): void {
     console.log(this.petFormGroup.value);
+  }
+
+  deletePet() {
+    this.deletePetWindowService.deletePet(this.petFormGroup.value.id).subscribe({
+      next: (response) => {
+        console.log(response)
+      },
+      error: (error) => {
+        console.log(error)
+      }
+    })
   }
 }
