@@ -29,7 +29,8 @@ export class CreateNewPetWindowComponent implements OnInit {
       age: ['', Validators.required],
       sex: ['', Validators.required],
       weight: ['', Validators.required],
-      height: ['', Validators.required]
+      height: ['', Validators.required],
+      description: ['', Validators.required]
     })
   }
 
