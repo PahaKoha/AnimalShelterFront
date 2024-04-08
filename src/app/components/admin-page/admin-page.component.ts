@@ -1,9 +1,12 @@
 import {Component} from '@angular/core';
 import {CreateNewPetWindowService} from "../../services/create-new-pet-window.service";
 import {CreateNewPetWindowComponent} from "../create-new-pet-window/create-new-pet-window.component";
-import {NgIf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {DeletePetWindowComponent} from "../delete-pet-window/delete-pet-window.component";
 import {DeletePetWindowService} from "../../services/delete-pet-window.service";
+import {InfoAboutPetForAdminComponent} from "../info-about-pet-for-admin/info-about-pet-for-admin.component";
+import {AdminPageService} from "../../services/admin-page.service";
+import {InfoAboutPetWindowComponent} from "../info-about-pet-window/info-about-pet-window.component";
 
 @Component({
   selector: 'app-admin-page',
@@ -11,13 +14,19 @@ import {DeletePetWindowService} from "../../services/delete-pet-window.service";
   imports: [
     CreateNewPetWindowComponent,
     NgIf,
-    DeletePetWindowComponent
+    DeletePetWindowComponent,
+    InfoAboutPetForAdminComponent,
+    InfoAboutPetWindowComponent,
+    NgForOf
   ],
   templateUrl: './admin-page.component.html',
   styleUrl: './admin-page.component.css'
 })
 export class AdminPageComponent {
-  constructor(private createNewPetWindowService: CreateNewPetWindowService, private deletePetWindow: DeletePetWindowService) {
+
+  animals: any[] = [];
+  constructor(private createNewPetWindowService: CreateNewPetWindowService, private deletePetWindow: DeletePetWindowService,
+              private adminPageService: AdminPageService) {
   }
 
   isCreateDeletePetWindowOpen(): boolean {
@@ -34,5 +43,20 @@ export class AdminPageComponent {
 
   changeCreateNewPetWindowState(): void {
     this.createNewPetWindowService.changeWindowState();
+  }
+
+  ngOnInit(): void {
+    this.getInfoAboutAllAnimal();
+  }
+  getInfoAboutAllAnimal() {
+    this.adminPageService.getAllAnimals().subscribe({
+        next: (response) => {
+          this.animals = response
+        },
+        error: (error) => {
+          console.log(error)
+        }
+      }
+    )
   }
 }

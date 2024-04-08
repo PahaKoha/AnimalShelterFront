@@ -1,7 +1,12 @@
-<h2>Панель администрации сайта</h2>
+<h1 class="elegant-title">Панель администрации сайта</h1>
+<div class="button-group">
+  <button class="styled-red-button" (click)="changeCreateNewPetWindowState()">Добавить нового зверька</button>
+  <button class="styled-red-button" (click)="changeDeleteWindowState()">Удалить зверька</button>
+</div>
 
-<button class="styled-red-button" (click)="changeCreateNewPetWindowState()">Добавить нового зверька</button>
-<button class="styled-red-button" (click)="changeDeleteWindowState()">Удалить нахуй 1 животное по id</button>
+<div class="main-container">
+  <app-info-about-pet-for-admin *ngFor="let animal of animals" [infoAboutPet]="animal"></app-info-about-pet-for-admin>
+</div>
 
 <app-create-new-pet-window *ngIf="isCreateNewPetWindowOpen()"></app-create-new-pet-window>
 <app-delete-pet-window *ngIf="isCreateDeletePetWindowOpen()"></app-delete-pet-window>

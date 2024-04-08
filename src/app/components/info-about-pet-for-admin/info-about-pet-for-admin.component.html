@@ -1,0 +1,15 @@
+<div class="animal-card">
+  <img class="animal-image" src="data:image/jpeg;base64,{{infoAboutPet.photo}}" alt="Photo">
+  <div class="animal-info">
+    <h2>Id: {{infoAboutPet.id}}</h2>
+    <h2>Кличка: {{ infoAboutPet.name }}</h2>
+    <p>Возраст: {{ infoAboutPet.age }}</p>
+    <div class="description">
+      <p>Описание: {{ infoAboutPet.description }}</p>
+    </div>
+  </div>
+  <div class="button-group">
+    <button>Изменить</button>
+    <button (click)="deleteAnimal()">Удалить</button>
+  </div>
+</div>
