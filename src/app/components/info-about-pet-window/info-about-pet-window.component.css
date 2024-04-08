@@ -7,7 +7,7 @@
   border-radius: 8px;
   padding: 20px;
   width: 250px;
-  height: 350px;
+  height: 400px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -33,4 +33,10 @@
 .animal-info p {
   font-size: 14px;
   color: #666;
+}
+
+.description{
+  width: 100%;
+  height: 100px;
+  overflow: auto;
 }
