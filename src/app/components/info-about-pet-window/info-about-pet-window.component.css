@@ -1,66 +1,36 @@
-:root {
-  --background-color: #ffffff;
-  --border-color: #e0e0e0;
-  --primary-text-color: #333333;
-  --secondary-text-color: #666666;
-  --accent-color: #007bff;
-}
-
-.info-about-pet-window {
-  background-color: pink;
-  display: flex;
-  flex-direction: row;
-  padding: 30px;
-  border: 2px solid var(--border-color);
-  width: 100%;
-  max-width: 800px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  border-radius: 10px;
-}
-
-.pet-image {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 20px;
-}
-
-.pet-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-  object-position: center;
-}
-
-.data {
+.animal-card {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: 500px;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  width: 250px;
+  height: 350px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.data h1 {
-  color: var(--primary-text-color);
+.animal-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.animal-info {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.animal-info h2 {
+  font-size: 18px;
+  color: #333;
   margin: 10px 0;
 }
 
-.data h1:first-child {
-  color: var(--accent-color);
-}
-
-@media (max-width: 600px) {
-  .info-about-pet-window {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .pet-image {
-    margin-bottom: 20px;
-  }
+.animal-info p {
+  font-size: 14px;
+  color: #666;
 }
