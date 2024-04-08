@@ -28,6 +28,11 @@
   margin-right: 5px;
   margin-left: 5px;
   padding: 5px;
+  transition: background-color 0.3s;
+}
+
+.button-group button:hover {
+  background-color: #cccccc;
 }
 
 /*.styled-red-button {*/
