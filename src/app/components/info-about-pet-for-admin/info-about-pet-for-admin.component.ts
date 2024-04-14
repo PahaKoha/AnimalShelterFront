@@ -17,6 +17,7 @@ export class InfoAboutPetForAdminComponent {
   deleteAnimal() {
     this.infoAboutPetForAdminService.deletePet(this.infoAboutPet.id).subscribe({
       next: (response) => {
+        location.reload();
         console.log(response)
       },
       error: (error) => {

@@ -59,6 +59,7 @@ export class CreateNewPetWindowComponent implements OnInit {
     formData.append('json', JSON.stringify(this.newPetFormGroup.value));
     this.createNewPetWindowService.createNewPet(formData).subscribe({
       next: (response) => {
+        location.reload();
         console.log(response.message);
       },
       error: (error) => {

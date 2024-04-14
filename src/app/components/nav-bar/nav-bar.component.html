@@ -1,11 +1,12 @@
 <nav class="navbar">
-  <a class="brand" routerLink="">AnimalShelter</a>
-  <ul>
-    <li>
-      <a routerLink="admin">Admin</a>
-    </li>
-    <li>
-      <a class="active" routerLink="">Animals</a>
-    </li>
-  </ul>
+  <div class="navbar-brand-and-links">
+    <a class="brand" routerLink="">AnimalShelter</a>
+    <ul>
+      <li><a routerLink="admin">Admin</a></li>
+      <li><a routerLink="">Animals</a></li>
+    </ul>
+  </div>
+  <div class="navbar-login">
+    <a (click)="changeLogInWindowState()" >Log In</a>
+  </div>
 </nav>

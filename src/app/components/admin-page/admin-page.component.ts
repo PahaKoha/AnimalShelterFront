@@ -29,7 +29,7 @@ export class AdminPageComponent {
               private adminPageService: AdminPageService) {
   }
 
-  isCreateDeletePetWindowOpen(): boolean {
+  isDeletePetWindowOpen(): boolean {
     return this.deletePetWindow.isWindowOpen();
   }
 

@@ -36,6 +36,7 @@ export class DeletePetWindowComponent {
   deletePet() {
     this.deletePetWindowService.deletePet(this.petFormGroup.value.id).subscribe({
       next: (response) => {
+        location.reload();
         console.log(response)
       },
       error: (error) => {
