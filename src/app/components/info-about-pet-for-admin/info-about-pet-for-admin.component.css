@@ -7,7 +7,7 @@
   border-radius: 8px;
   padding: 20px;
   width: 250px;
-  height: 450px;
+  height: 500px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -17,17 +17,18 @@
   height: 200px;
   object-fit: cover;
   border-radius: 4px;
+  margin-bottom: 10px;
+
 }
 
 .animal-info {
-  margin-top: 10px;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .animal-info h2 {
   font-size: 18px;
   color: #333;
-  margin: 10px 0;
 }
 
 .animal-info p {
@@ -43,7 +44,7 @@
 }
 
 .button-group {
-  margin: 20px;
+
 }
 
 .button-group button{
