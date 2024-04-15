@@ -9,7 +9,9 @@
     </div>
   </div>
   <div class="button-group">
-    <button>Изменить</button>
+    <button (click)="changeUpdateWindowState()">Изменить</button>
     <button (click)="deleteAnimal()">Удалить</button>
   </div>
 </div>
+
+<app-update-pet-window *ngIf="isUpdatePetWindowOpen()" [animal]="infoAboutPet"></app-update-pet-window>

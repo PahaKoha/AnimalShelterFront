@@ -7,6 +7,8 @@ import {DeletePetWindowService} from "../../services/delete-pet-window.service";
 import {InfoAboutPetForAdminComponent} from "../info-about-pet-for-admin/info-about-pet-for-admin.component";
 import {AdminPageService} from "../../services/admin-page.service";
 import {InfoAboutPetWindowComponent} from "../info-about-pet-window/info-about-pet-window.component";
+import {UpdatePetWindowService} from "../../services/update-pet-window.service";
+import {UpdatePetWindowComponent} from "../update-pet-window/update-pet-window.component";
 
 @Component({
   selector: 'app-admin-page',
@@ -17,7 +19,8 @@ import {InfoAboutPetWindowComponent} from "../info-about-pet-window/info-about-p
     DeletePetWindowComponent,
     InfoAboutPetForAdminComponent,
     InfoAboutPetWindowComponent,
-    NgForOf
+    NgForOf,
+    UpdatePetWindowComponent
   ],
   templateUrl: './admin-page.component.html',
   styleUrl: './admin-page.component.css'
@@ -28,7 +31,6 @@ export class AdminPageComponent {
   constructor(private createNewPetWindowService: CreateNewPetWindowService, private deletePetWindow: DeletePetWindowService,
               private adminPageService: AdminPageService) {
   }
-
   isDeletePetWindowOpen(): boolean {
     return this.deletePetWindow.isWindowOpen();
   }
