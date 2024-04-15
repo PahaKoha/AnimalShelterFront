@@ -6,17 +6,16 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class UpdatePetWindowService {
-  private windowState: boolean = false;
+  private windowStates: {[key: number]: boolean} = {};
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient) { }
+
+  isWindowOpen(id: number): boolean {
+    return this.windowStates[id];
   }
 
-  isWindowOpen(): boolean {
-    return this.windowState;
-  }
-
-  changeWindowState(): void {
-    this.windowState = !this.windowState;
+  changeWindowState(id: number): void {
+    this.windowStates[id] = !this.windowStates[id];
   }
 
   updatePet(formData: FormData, id: number): Observable<any> {

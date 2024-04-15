@@ -16,7 +16,6 @@ export class UpdatePetWindowComponent implements OnInit {
 
   updatePetFormGroup!: FormGroup;
   file!: File;
-  imageUrl: string | undefined;
   @Input() animal: any;
 
   constructor(private updatePetWindowService: UpdatePetWindowService, private formBuilder: FormBuilder) {
@@ -38,7 +37,7 @@ export class UpdatePetWindowComponent implements OnInit {
   }
 
   changeUpdateWindowState(): void {
-    this.updatePetWindowService.changeWindowState();
+    this.updatePetWindowService.changeWindowState(this.animal.id);
   }
   updatePet(): void {
     let formData = new FormData();

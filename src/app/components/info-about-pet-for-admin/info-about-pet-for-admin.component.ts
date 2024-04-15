@@ -21,11 +21,11 @@ export class InfoAboutPetForAdminComponent {
   constructor(private infoAboutPetForAdminService: InfoAboutPetForAdminService, private updatePetWindowService: UpdatePetWindowService) {
   }
   changeUpdateWindowState(): void {
-    this.updatePetWindowService.changeWindowState();
+    this.updatePetWindowService.changeWindowState(this.infoAboutPet.id);
   }
 
   isUpdatePetWindowOpen(): boolean {
-    return this.updatePetWindowService.isWindowOpen()
+    return this.updatePetWindowService.isWindowOpen(this.infoAboutPet.id);
   }
   deleteAnimal() {
     this.infoAboutPetForAdminService.deletePet(this.infoAboutPet.id).subscribe({
