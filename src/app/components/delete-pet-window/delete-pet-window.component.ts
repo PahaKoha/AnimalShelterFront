@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {DeletePetWindowService} from "../../services/delete-pet-window.service";
 import {response} from "express";
@@ -34,14 +34,17 @@ export class DeletePetWindowComponent {
   }
 
   deletePet() {
-    this.deletePetWindowService.deletePet(this.petFormGroup.value.id).subscribe({
-      next: (response) => {
-        location.reload();
-        console.log(response)
-      },
-      error: (error) => {
-        console.log(error)
-      }
-    })
+    const isConfirm = confirm(`Вы хотите удалить зверька с id ${this.petFormGroup.value.id}?`)
+    if (isConfirm) {
+      this.deletePetWindowService.deletePet(this.petFormGroup.value.id).subscribe({
+        next: (response) => {
+          location.reload();
+          console.log(response)
+        },
+        error: (error) => {
+          console.log(error)
+        }
+      })
+    }
   }
 }

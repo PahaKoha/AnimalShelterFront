@@ -40,17 +40,20 @@ export class UpdatePetWindowComponent implements OnInit {
     this.updatePetWindowService.changeWindowState(this.animal.id);
   }
   updatePet(): void {
-    let formData = new FormData();
-    formData.append('image', this.file);
-    formData.append('json', JSON.stringify(this.updatePetFormGroup.value));
-    this.updatePetWindowService.updatePet(formData, this.animal.id).subscribe({
-      next: (response) => {
-        location.reload();
-        console.log(response.message);
-      },
-      error: (error) => {
-        console.log(error);
-      }
-    })
+    const isConfirm = confirm(`Вы хотите изменить данные зверька с id ${this.animal.id}?`)
+    if (isConfirm) {
+      let formData = new FormData();
+      formData.append('image', this.file);
+      formData.append('json', JSON.stringify(this.updatePetFormGroup.value));
+      this.updatePetWindowService.updatePet(formData, this.animal.id).subscribe({
+        next: (response) => {
+          location.reload();
+          console.log(response.message);
+        },
+        error: (error) => {
+          console.log(error);
+        }
+      })
+    }
   }
 }

@@ -20,6 +20,7 @@ export class InfoAboutPetForAdminComponent {
 
   constructor(private infoAboutPetForAdminService: InfoAboutPetForAdminService, private updatePetWindowService: UpdatePetWindowService) {
   }
+
   changeUpdateWindowState(): void {
     this.updatePetWindowService.changeWindowState(this.infoAboutPet.id);
   }
@@ -27,15 +28,19 @@ export class InfoAboutPetForAdminComponent {
   isUpdatePetWindowOpen(): boolean {
     return this.updatePetWindowService.isWindowOpen(this.infoAboutPet.id);
   }
+
   deleteAnimal() {
-    this.infoAboutPetForAdminService.deletePet(this.infoAboutPet.id).subscribe({
-      next: (response) => {
-        location.reload();
-        console.log(response)
-      },
-      error: (error) => {
-        console.log(error)
-      }
-    })
+    const isConfirm = confirm(`Вы хотите удалить зверька с id ${this.infoAboutPet.id}?`)
+    if (isConfirm) {
+      this.infoAboutPetForAdminService.deletePet(this.infoAboutPet.id).subscribe({
+        next: (response) => {
+          location.reload();
+          console.log(response)
+        },
+        error: (error) => {
+          console.log(error)
+        }
+      })
+    }
   }
 }

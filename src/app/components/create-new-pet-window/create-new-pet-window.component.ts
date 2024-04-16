@@ -54,6 +54,7 @@ export class CreateNewPetWindowComponent implements OnInit {
       next: (response) => {
         location.reload();
         console.log(response.message);
+        alert(`Зверек под кличкой '${this.newPetFormGroup.value.name}' был успешно добавлен!`)
       },
       error: (error) => {
         console.log(error);

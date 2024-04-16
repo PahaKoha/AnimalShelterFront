@@ -17,7 +17,6 @@ export class AppComponent {
 
   constructor(private logInService: LogInService) {
   }
-
   isLogInWindowOpen(): boolean {
     return this.logInService.isWindowOpen();
   }
