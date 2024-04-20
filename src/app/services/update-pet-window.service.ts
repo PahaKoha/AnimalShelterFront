@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import { environment } from '../../environments/environments';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,6 @@ export class UpdatePetWindowService {
   }
 
   updatePet(formData: FormData, id: number): Observable<any> {
-    return this.httpClient.post(`http://localhost:8080/api/update-animal/${id}`, formData);
+    return this.httpClient.post(`${environment.backendUrl}/api/update-animal/${id}`, formData);
   }
 }

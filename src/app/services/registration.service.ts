@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RegistrationUserDTO } from '../DTOs/registration-user-dto';
+import { environment } from '../../environments/environments';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,6 @@ export class RegistrationService {
   }
    
   registration(registrationUserDTO: RegistrationUserDTO): Observable<any> {
-    return this.httpClient.put(`http://localhost:8080/auth/registration`, registrationUserDTO);
+    return this.httpClient.put(`${environment.backendUrl}/auth/registration`, registrationUserDTO);
   }
 }

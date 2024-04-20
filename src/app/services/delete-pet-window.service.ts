@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
+import { environment } from '../../environments/environments';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,6 @@ export class DeletePetWindowService {
   }
 
   deletePet(id: number): Observable<any> {
-    return this.httpClient.delete(`http://localhost:8080/api/delete-animal/${id}`);
+    return this.httpClient.delete(`${environment.backendUrl}/api/delete-animal/${id}`);
   }
 }
