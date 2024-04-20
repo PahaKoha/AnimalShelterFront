@@ -35,13 +35,19 @@
   background-color: #272727;
 }
 
-.navbar-login a {
+.navbar-login button {
   padding: 24px;
   display: block;
+  border: medium none;
   text-decoration: none;
+  background-image: none;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+  text-decoration:none;
   color: #e7e7e7;
 }
 
-.navbar-login a:hover {
+.navbar-login button:hover {
   background-color: #272727;
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {RouterLink} from "@angular/router";
 import {LogInService} from "../../services/log-in.service";
+import { RegistrationService } from '../../services/registration.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -18,4 +19,5 @@ export class NavBarComponent {
   changeLogInWindowState(): void {
     this.logInService.changeWindowState();
   }
+
 }

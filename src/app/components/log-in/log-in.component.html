@@ -1,12 +1,15 @@
 <div class="main-container">
-    <div class="delete-pet-window">
-      <h1>Войти в аккаунт</h1>
-      <input type="text" placeholder="Имя пользователя">
-      <input type="password" placeholder="Пароль">
-      <div class="button-group">
-        <button>Войти</button>
-        <button (click)="changeLogInWindowState()">Закрыть</button>
-      </div>
+  <div class="delete-pet-window">
+    <h1>Войти в аккаунт</h1>
+    <input type="text" placeholder="Имя пользователя">
+    <input type="password" placeholder="Пароль">
+    <div class="button-group">
+      <button>Войти</button>
+      <button (click)="changeLogInWindowState()">Закрыть</button>
     </div>
+    <div class="link">
+      <a (click)="changeLogInWindowState(); changeRegistrationWindowState()">У вас еще нет аккаунта?
+        Зарегистрируйтесь!</a>
+    </div>
+  </div>
 </div>
-
