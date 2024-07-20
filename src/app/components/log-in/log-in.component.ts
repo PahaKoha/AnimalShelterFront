@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
-import { LogInService } from "../../services/log-in.service";
-import { RouterLink } from "@angular/router";
-import { RegistrationService } from '../../services/registration.service';
-import { response } from 'express';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {LogInService} from "../../services/log-in.service";
+import {RouterLink} from "@angular/router";
+import {RegistrationService} from '../../services/registration.service';
 
 @Component({
   selector: 'app-log-in',
@@ -20,33 +19,34 @@ export class LogInComponent implements OnInit {
 
   loginFormGroup!: FormGroup;
 
-    constructor(private logInService: LogInService, private registrationService: RegistrationService, private formBuilder: FormBuilder) {}
+  constructor(private logInService: LogInService, private registrationService: RegistrationService, private formBuilder: FormBuilder) {
+  }
 
-ngOnInit(): void {
-  this.loginFormGroup = this.formBuilder.group({
-    username: ['', Validators.required],
-    password: ['', Validators.required]
-  })
-}
+  ngOnInit(): void {
+    this.loginFormGroup = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    })
+  }
 
-changeLogInWindowState(): void {
-  this.logInService.changeWindowState();
-}
+  changeLogInWindowState(): void {
+    this.logInService.changeWindowState();
+  }
 
-changeRegistrationWindowState(): void {
-  this.registrationService.changeWindowState();
-}
+  changeRegistrationWindowState(): void {
+    this.registrationService.changeWindowState();
+  }
 
-authUser() {
-  console.log(this.loginFormGroup.value)
-  this.logInService.logIn(this.loginFormGroup.value).subscribe({
-    next: (response) => {
-      localStorage.setItem('token', response.token)
-      location.reload();
-    },
-    error: (error) => {
-      console.log(error)
-    }
-  })
-}
+  authUser() {
+    console.log(this.loginFormGroup.value)
+    this.logInService.logIn(this.loginFormGroup.value).subscribe({
+      next: (response) => {
+        localStorage.setItem('token', response.token)
+        location.reload();
+      },
+      error: (error) => {
+        console.log(error)
+      }
+    })
+  }
 }
