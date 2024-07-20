@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { logInDTO } from '../DTOs/log-in-dto';
-import { Observable } from 'rxjs';
+import {Observable, tap} from 'rxjs';
 import { environment } from '../../environments/environments';
+import {AuthService} from "./auth.service";
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,7 @@ import { environment } from '../../environments/environments';
 export class LogInService {
   private windowState: boolean = false;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private authService: AuthService) {}
 
   isWindowOpen(): boolean {
     return this.windowState;
