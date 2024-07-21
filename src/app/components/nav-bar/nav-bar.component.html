@@ -8,6 +8,6 @@
   </div>
   <div class="navbar-login">
     <button *ngIf="!username" (click)="changeLogInWindowState()">LogIn</button>
-    <span *ngIf="username">Welcome, {{ username }}</span>
+    <button *ngIf="username">Welcome, {{ username }}</button>
   </div>
 </nav>

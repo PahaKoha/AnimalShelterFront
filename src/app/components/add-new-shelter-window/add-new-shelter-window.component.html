@@ -1,0 +1,14 @@
+<div class="main-container">
+  <form [formGroup]="newShelterFormGroup">
+    <div class="add-new-shelter-window">
+      <h1>Добавьте новый приют</h1>
+      <input formControlName="name" placeholder="Название приюта">
+      <input formControlName="address" placeholder="Адрес приюта">
+      <input formControlName="phone" placeholder="Номер телеона приюта">
+      <div class="button-group">
+        <button (click)="addNewShelter()">Добавить</button>
+        <button (click)="changeAddNewShelterWindowState()">Закрыть</button>
+      </div>
+    </div>
+  </form>
+</div>

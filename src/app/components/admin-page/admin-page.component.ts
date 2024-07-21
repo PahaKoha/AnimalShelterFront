@@ -9,6 +9,8 @@ import {AdminPageService} from "../../services/admin-page.service";
 import {InfoAboutPetWindowComponent} from "../info-about-pet-window/info-about-pet-window.component";
 import {UpdatePetWindowService} from "../../services/update-pet-window.service";
 import {UpdatePetWindowComponent} from "../update-pet-window/update-pet-window.component";
+import {AddNewShelterWindowService} from "../../services/add-new-shelter-window.service";
+import {AddNewShelterWindowComponent} from "../add-new-shelter-window/add-new-shelter-window.component";
 
 @Component({
   selector: 'app-admin-page',
@@ -20,7 +22,8 @@ import {UpdatePetWindowComponent} from "../update-pet-window/update-pet-window.c
     InfoAboutPetForAdminComponent,
     InfoAboutPetWindowComponent,
     NgForOf,
-    UpdatePetWindowComponent
+    UpdatePetWindowComponent,
+    AddNewShelterWindowComponent
   ],
   templateUrl: './admin-page.component.html',
   styleUrl: './admin-page.component.css'
@@ -29,7 +32,7 @@ export class AdminPageComponent {
 
   animals: any[] = [];
   constructor(private createNewPetWindowService: CreateNewPetWindowService, private deletePetWindow: DeletePetWindowService,
-              private adminPageService: AdminPageService) {
+              private adminPageService: AdminPageService, private addNewShelterWindowService: AddNewShelterWindowService) {
   }
   isDeletePetWindowOpen(): boolean {
     return this.deletePetWindow.isWindowOpen();
@@ -45,6 +48,14 @@ export class AdminPageComponent {
 
   changeCreateNewPetWindowState(): void {
     this.createNewPetWindowService.changeWindowState();
+  }
+
+  isAddNewShelterWindowOpen(): boolean {
+    return this.addNewShelterWindowService.isWindowOpen();
+  }
+
+  changeAddShelterWindowState(): void {
+    this.addNewShelterWindowService.changeWindowState();
   }
 
   ngOnInit(): void {
