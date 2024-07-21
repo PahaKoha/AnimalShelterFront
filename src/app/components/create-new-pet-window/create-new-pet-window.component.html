@@ -18,6 +18,12 @@
           <input type="radio" formControlName="sex" value="Ж"> Ж
         </label>
       </div>
+      <div>
+        <label for="shelter">Выберите приют:</label>
+        <select formControlName="shelterId" id="shelter">
+          <option *ngFor="let shelter of shelters" [value]="shelter.id">{{ shelter.name }}</option>
+        </select>
+      </div>
       <div class="button-group">
         <button type="button" (click)="createNewPet()">Добавить</button>
         <button type="button" (click)="changeCreateNewPetWindowState()">Закрыть</button>

@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {CreateNewPetWindowService} from "../../services/create-new-pet-window.service";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {NgIf, NgOptimizedImage} from "@angular/common";
+import {NgFor, NgIf, NgOptimizedImage} from "@angular/common";
+import {ShelterService} from "../../services/shelter.service";
 
 @Component({
   selector: 'app-create-new-pet-window',
@@ -9,14 +10,18 @@ import {NgIf, NgOptimizedImage} from "@angular/common";
   imports: [
     ReactiveFormsModule,
     NgOptimizedImage,
-    NgIf
+    NgIf,
+    NgFor
   ],
   templateUrl: './create-new-pet-window.component.html',
   styleUrl: './create-new-pet-window.component.css'
 })
 export class CreateNewPetWindowComponent implements OnInit {
-  constructor(private createNewPetWindowService: CreateNewPetWindowService, private formBuilder: FormBuilder) {
+  constructor(private createNewPetWindowService: CreateNewPetWindowService, private formBuilder: FormBuilder,
+             private shelterService: ShelterService) {
   }
+
+  shelters: any[] = [];
 
   newPetFormGroup!: FormGroup;
   file!: File;
@@ -28,7 +33,17 @@ export class CreateNewPetWindowComponent implements OnInit {
       sex: ['', Validators.required],
       weight: ['', Validators.required],
       height: ['', Validators.required],
-      description: ['', Validators.required]
+      description: ['', Validators.required],
+      shelterId: ['', Validators.required]
+    })
+
+    this.shelterService.shelters$.subscribe({
+      next: (shelters) => {
+        this.shelters = shelters;
+      },
+      error: (error) => {
+        console.log(error);
+      }
     })
   }
 
@@ -45,6 +60,7 @@ export class CreateNewPetWindowComponent implements OnInit {
   }
 
   createNewPet(): void {
+
     let formData = new FormData();
     formData.append('image', this.file);
     formData.append('json', JSON.stringify(this.newPetFormGroup.value));

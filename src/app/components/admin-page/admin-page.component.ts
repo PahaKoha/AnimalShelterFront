@@ -12,6 +12,7 @@ import {UpdatePetWindowComponent} from "../update-pet-window/update-pet-window.c
 import {AddNewShelterWindowService} from "../../services/add-new-shelter-window.service";
 import {AddNewShelterWindowComponent} from "../add-new-shelter-window/add-new-shelter-window.component";
 import {AnimalService} from "../../services/animal.service";
+import {ShelterService} from "../../services/shelter.service";
 
 @Component({
   selector: 'app-admin-page',
@@ -34,7 +35,7 @@ export class AdminPageComponent implements OnInit{
   animals: any[] = [];
   constructor(private createNewPetWindowService: CreateNewPetWindowService, private deletePetWindow: DeletePetWindowService,
               private adminPageService: AdminPageService, private addNewShelterWindowService: AddNewShelterWindowService,
-              private animalService: AnimalService) {
+              private animalService: AnimalService, private shelterService: ShelterService) {
   }
   isDeletePetWindowOpen(): boolean {
     return this.deletePetWindow.isWindowOpen();
@@ -69,5 +70,13 @@ export class AdminPageComponent implements OnInit{
         console.log(error);
       }
     });
+    /*this.shelterService.shelters$.subscribe({
+      next: (shelters) => {
+        this.shelters = shelters;
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    })*/
   }
 }
