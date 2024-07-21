@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CreateNewPetWindowService} from "../../services/create-new-pet-window.service";
 import {CreateNewPetWindowComponent} from "../create-new-pet-window/create-new-pet-window.component";
 import {NgForOf, NgIf} from "@angular/common";
@@ -11,6 +11,7 @@ import {UpdatePetWindowService} from "../../services/update-pet-window.service";
 import {UpdatePetWindowComponent} from "../update-pet-window/update-pet-window.component";
 import {AddNewShelterWindowService} from "../../services/add-new-shelter-window.service";
 import {AddNewShelterWindowComponent} from "../add-new-shelter-window/add-new-shelter-window.component";
+import {AnimalService} from "../../services/animal.service";
 
 @Component({
   selector: 'app-admin-page',
@@ -28,11 +29,12 @@ import {AddNewShelterWindowComponent} from "../add-new-shelter-window/add-new-sh
   templateUrl: './admin-page.component.html',
   styleUrl: './admin-page.component.css'
 })
-export class AdminPageComponent {
+export class AdminPageComponent implements OnInit{
 
   animals: any[] = [];
   constructor(private createNewPetWindowService: CreateNewPetWindowService, private deletePetWindow: DeletePetWindowService,
-              private adminPageService: AdminPageService, private addNewShelterWindowService: AddNewShelterWindowService) {
+              private adminPageService: AdminPageService, private addNewShelterWindowService: AddNewShelterWindowService,
+              private animalService: AnimalService) {
   }
   isDeletePetWindowOpen(): boolean {
     return this.deletePetWindow.isWindowOpen();
@@ -59,17 +61,13 @@ export class AdminPageComponent {
   }
 
   ngOnInit(): void {
-    this.getInfoAboutAllAnimal();
-  }
-  getInfoAboutAllAnimal() {
-    this.adminPageService.getAllAnimals().subscribe({
-        next: (response) => {
-          this.animals = response
-        },
-        error: (error) => {
-          console.log(error)
-        }
+    this.animalService.animals$.subscribe({
+      next: (animals) => {
+        this.animals = animals;
+      },
+      error: (error) => {
+        console.log(error);
       }
-    )
+    });
   }
 }

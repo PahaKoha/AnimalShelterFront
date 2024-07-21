@@ -4,6 +4,7 @@ import {response} from "express";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 import {InfoAboutPetWindowComponent} from "../info-about-pet-window/info-about-pet-window.component";
 import {CommonModule} from "@angular/common";
+import {AnimalService} from "../../services/animal.service";
 
 @Component({
   selector: 'app-main-page',
@@ -17,21 +18,18 @@ import {CommonModule} from "@angular/common";
 export class MainPageComponent implements OnInit{
   animals: any[] = [];
 
-  constructor(private mainPageService: MainPageService) {
+  constructor(private mainPageService: MainPageService, private animalService: AnimalService) {
   }
 
   ngOnInit(): void {
-    this.getInfoAboutAllAnimal();
-  }
-  getInfoAboutAllAnimal() {
-    this.mainPageService.getAllAnimals().subscribe({
-        next: (response) => {
-          this.animals = response
-        },
-        error: (error) => {
-          console.log(error)
-        }
+    this.animalService.animals$.subscribe({
+      next: (animals) => {
+        this.animals = animals;
+      },
+      error: (error) => {
+        console.log(error);
       }
-    )
+    });
   }
+
 }

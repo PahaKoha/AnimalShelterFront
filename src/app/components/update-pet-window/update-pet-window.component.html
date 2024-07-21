@@ -2,13 +2,21 @@
   <form [formGroup]="updatePetFormGroup" enctype="multipart/form-data">
     <div class="update-pet-window">
       <h1>Обновите информацию о питомце</h1>
-      <input formControlName="name" placeholder="{{animal.name}}">
-      <input formControlName="age" placeholder="{{animal.age}}">
-      <input formControlName="sex" placeholder="{{animal.sex}}">
-      <input formControlName="weight" placeholder="{{animal.weight}}">
-      <input formControlName="height" placeholder="{{animal.height}}">
-      <input formControlName="description" placeholder="{{animal.description}}">
+      <input formControlName="name" [placeholder]="animal?.name || 'Введите имя питомца'">
+      <input formControlName="age" [placeholder]="animal?.age || 'Введите возраст питомца'">
+      <input formControlName="weight" [placeholder]="animal?.weight || 'Введите вес питомца'">
+      <input formControlName="height" [placeholder]="animal?.height || 'Введите размер питомца'">
+      <input formControlName="description" [placeholder]="animal?.description || 'Введите описание питомца'">
       <input type="file" placeholder="Фото питомца" (change)="onFileSelected($event)">
+      <div class="select-sex">
+        <p>Выберите пол:</p>
+        <label>
+          <input type="radio" formControlName="sex" value="М"> М
+        </label>
+        <label>
+          <input type="radio" formControlName="sex" value="Ж"> Ж
+        </label>
+      </div>
       <div class="button-group">
         <button (click)="updatePet()">Изменить</button>
         <button (click)="changeUpdateWindowState()">Закрыть</button>

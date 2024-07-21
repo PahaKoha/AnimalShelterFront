@@ -55,3 +55,13 @@
 .button-group button:hover {
   background-color: #333333;
 }
+
+.select-sex {
+
+}
+
+.select-sex label {
+  margin-right: 10px;
+
+}
+
