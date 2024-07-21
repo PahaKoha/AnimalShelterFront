@@ -1,4 +1,4 @@
 export interface logInDTO {
-    username: String,
-    password: String
+    username: string,
+    password: string
 }
