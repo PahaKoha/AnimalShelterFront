@@ -20,8 +20,6 @@ export class CreateNewPetWindowComponent implements OnInit {
 
   newPetFormGroup!: FormGroup;
   file!: File;
-  imageUrl: string | undefined;
-
 
   ngOnInit(): void {
     this.newPetFormGroup = this.formBuilder.group({
