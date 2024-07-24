@@ -12,7 +12,7 @@
 }
 
 
-.update-pet-window {
+.add-new-shelter-window {
   background-color: #f9f9f9;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   display: flex;
@@ -24,7 +24,7 @@
 }
 
 
-.update-pet-window input {
+.add-new-shelter-window input {
   padding: 10px;
   margin: 10px 0;
   border: 1px solid #ccc;
@@ -55,27 +55,3 @@
 .button-group button:hover {
   background-color: #333333;
 }
-
-.select-sex {
-  display: flex;
-  justify-content: left;
-  align-items: center;
-}
-
-.select-sex input {
-  margin-left: 5px;
-  padding: 10px;
-}
-
-.select-shelter {
-  display: flex;
-  justify-content: left;
-  align-items: center;
-}
-
-.select-shelter select {
-  margin-left: 5px;
-  padding-left: 15px;
-
-}
-

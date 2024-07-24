@@ -8,13 +8,13 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 
 .create-new-pet-window {
   background-color: #f9f9f9;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   padding: 30px;
@@ -29,7 +29,7 @@
   margin: 10px 0;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -55,3 +55,28 @@
 .button-group button:hover {
   background-color: #333333;
 }
+
+.select-sex {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.select-sex input {
+  margin-left: 5px;
+  padding: 10px;
+}
+
+.select-shelter {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.select-shelter select {
+  margin-left: 5px;
+  padding-left: 15px;
+
+}
+
+

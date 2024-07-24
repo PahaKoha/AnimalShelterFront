@@ -1,11 +1,14 @@
 <div class="animal-card">
-  <img class="animal-image" src="data:image/jpeg;base64,{{infoAboutPet.photo}}" alt="Photo">
+  <img class="animal-image" [src]="'http://localhost:8080/' + infoAboutPet.photoPath" alt="Photo">
   <div class="animal-info">
     <h2>Кличка: {{ infoAboutPet.name }}</h2>
     <p>Возраст: {{ infoAboutPet.age }}</p>
     <div class="description">
       <p>Описание: {{ infoAboutPet.description }}</p>
     </div>
+  </div>
+  <div class="button-group">
+<!--    <button>Подробнее</button>-->
   </div>
 </div>
 

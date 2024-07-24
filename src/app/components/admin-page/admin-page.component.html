@@ -2,11 +2,13 @@
 <div class="button-group">
   <button class="styled-red-button" (click)="changeCreateNewPetWindowState()">Добавить нового зверька</button>
   <button class="styled-red-button" (click)="changeDeleteWindowState()">Удалить зверька</button>
+  <button class="styled-red-button" (click)="changeAddShelterWindowState()">Добавить новый приют</button>
 </div>
 
 <div class="main-container">
   <app-info-about-pet-for-admin *ngFor="let animal of animals" [infoAboutPet]="animal"></app-info-about-pet-for-admin>
 </div>
 
-<app-create-new-pet-window *ngIf="isCreateNewPetWindowOpen()"></app-create-new-pet-window>
+<app-create-new-pet-window *ngIf="isCreateNewPetWindowOpen()" [shelters]="shelters"></app-create-new-pet-window>
 <app-delete-pet-window *ngIf="isDeletePetWindowOpen()"></app-delete-pet-window>
+<app-add-new-shelter-window *ngIf="isAddNewShelterWindowOpen()"></app-add-new-shelter-window>
