@@ -1,13 +1,16 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UpdatePetWindowService} from "../../services/update-pet-window.service";
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {NgForOf} from "@angular/common";
+import {ShelterService} from "../../services/shelter.service";
 
 @Component({
   selector: 'app-update-pet-window',
   standalone: true,
   imports: [
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgForOf
   ],
   templateUrl: './update-pet-window.component.html',
   styleUrl: './update-pet-window.component.css'
@@ -16,9 +19,13 @@ export class UpdatePetWindowComponent implements OnInit {
 
   updatePetFormGroup!: FormGroup;
   file!: File;
+  shelters: any[] = [];
+
+
   @Input() animal: any;
 
-  constructor(private updatePetWindowService: UpdatePetWindowService, private formBuilder: FormBuilder) {
+  constructor(private updatePetWindowService: UpdatePetWindowService, private formBuilder: FormBuilder,
+              private shelterService: ShelterService) {
   }
 
   ngOnInit(): void {
@@ -28,7 +35,17 @@ export class UpdatePetWindowComponent implements OnInit {
       sex: [this.animal.sex || '', Validators.required],
       weight: [this.animal.weight || '', Validators.required],
       height: [this.animal.height || '', Validators.required],
-      description: [this.animal.description || '', Validators.required]
+      description: [this.animal.description || '', Validators.required],
+      shelterId: ['', Validators.required]
+    })
+
+    this.shelterService.shelters$.subscribe({
+      next: (shelters) => {
+        this.shelters = shelters;
+      },
+      error: (error) => {
+        console.log(error);
+      }
     })
   }
 
