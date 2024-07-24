@@ -2,23 +2,19 @@
   <form [formGroup]="newPetFormGroup" enctype="multipart/form-data">
     <div class="create-new-pet-window">
       <h1>Добавьте нового питомца</h1>
+
       <input formControlName="name" placeholder="Кличка питомца">
       <input formControlName="age" placeholder="Возраст питомца">
-
       <input formControlName="weight" placeholder="Вес питомца">
       <input formControlName="height" placeholder="Размер питомца">
       <input formControlName="description" placeholder="Описание">
       <input type="file" placeholder="Фото питомца" (change)="onFileSelected($event)">
       <div class="select-sex">
         <p>Выберите пол:</p>
-        <label>
           <input type="radio" formControlName="sex" value="М"> М
-        </label>
-        <label>
           <input type="radio" formControlName="sex" value="Ж"> Ж
-        </label>
       </div>
-      <div>
+      <div class="select-shelter">
         <label for="shelter">Выберите приют:</label>
         <select formControlName="shelterId" id="shelter">
           <option *ngFor="let shelter of shelters" [value]="shelter.id">{{ shelter.name }}</option>

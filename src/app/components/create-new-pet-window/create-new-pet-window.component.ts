@@ -1,8 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {CreateNewPetWindowService} from "../../services/create-new-pet-window.service";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NgFor, NgIf, NgOptimizedImage} from "@angular/common";
-import {ShelterService} from "../../services/shelter.service";
 
 @Component({
   selector: 'app-create-new-pet-window',
@@ -17,11 +16,10 @@ import {ShelterService} from "../../services/shelter.service";
   styleUrl: './create-new-pet-window.component.css'
 })
 export class CreateNewPetWindowComponent implements OnInit {
-  constructor(private createNewPetWindowService: CreateNewPetWindowService, private formBuilder: FormBuilder,
-             private shelterService: ShelterService) {
-  }
+  @Input() shelters: any[] = [];
 
-  shelters: any[] = [];
+  constructor(private createNewPetWindowService: CreateNewPetWindowService, private formBuilder: FormBuilder) {
+  }
 
   newPetFormGroup!: FormGroup;
   file!: File;
@@ -35,16 +33,7 @@ export class CreateNewPetWindowComponent implements OnInit {
       height: ['', Validators.required],
       description: ['', Validators.required],
       shelterId: ['', Validators.required]
-    })
-
-    this.shelterService.shelters$.subscribe({
-      next: (shelters) => {
-        this.shelters = shelters;
-      },
-      error: (error) => {
-        console.log(error);
-      }
-    })
+    });
   }
 
   changeCreateNewPetWindowState(): void {
@@ -60,19 +49,22 @@ export class CreateNewPetWindowComponent implements OnInit {
   }
 
   createNewPet(): void {
-
-    let formData = new FormData();
-    formData.append('image', this.file);
-    formData.append('json', JSON.stringify(this.newPetFormGroup.value));
-    this.createNewPetWindowService.createNewPet(formData).subscribe({
-      next: (response) => {
-        location.reload();
-        console.log(response.message);
-        alert(`Зверек под кличкой '${this.newPetFormGroup.value.name}' был успешно добавлен!`)
-      },
-      error: (error) => {
-        console.log(error);
-      }
-    })
+    if (this.newPetFormGroup.valid) {
+      let formData = new FormData();
+      formData.append('image', this.file);
+      formData.append('json', JSON.stringify(this.newPetFormGroup.value));
+      this.createNewPetWindowService.createNewPet(formData).subscribe({
+        next: (response) => {
+          location.reload();
+          console.log(response.message);
+          alert(`Зверек под кличкой '${this.newPetFormGroup.value.name}' был успешно добавлен!`);
+        },
+        error: (error) => {
+          console.log(error);
+        }
+      });
+    } else {
+      alert('Пожалуйста, заполните все поля.');
+    }
   }
 }

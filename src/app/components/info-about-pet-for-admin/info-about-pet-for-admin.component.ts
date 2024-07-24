@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {InfoAboutPetForAdminService} from "../../services/info-about-pet-for-admin.service";
 import {response} from "express";
 import {UpdatePetWindowService} from "../../services/update-pet-window.service";
@@ -15,10 +15,14 @@ import {UpdatePetWindowComponent} from "../update-pet-window/update-pet-window.c
   templateUrl: './info-about-pet-for-admin.component.html',
   styleUrl: './info-about-pet-for-admin.component.css'
 })
-export class InfoAboutPetForAdminComponent {
+export class InfoAboutPetForAdminComponent implements OnInit{
   @Input() infoAboutPet: any;
 
   constructor(private infoAboutPetForAdminService: InfoAboutPetForAdminService, private updatePetWindowService: UpdatePetWindowService) {
+  }
+
+  ngOnInit(): void {
+    console.log(this.infoAboutPet);
   }
 
   changeUpdateWindowState(): void {

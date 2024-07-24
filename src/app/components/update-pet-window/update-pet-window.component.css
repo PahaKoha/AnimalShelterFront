@@ -57,11 +57,25 @@
 }
 
 .select-sex {
-
+  display: flex;
+  justify-content: left;
+  align-items: center;
 }
 
-.select-sex label {
-  margin-right: 10px;
+.select-sex input {
+  margin-left: 5px;
+  padding: 10px;
+}
+
+.select-shelter {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.select-shelter select {
+  margin-left: 5px;
+  padding-left: 15px;
 
 }
 

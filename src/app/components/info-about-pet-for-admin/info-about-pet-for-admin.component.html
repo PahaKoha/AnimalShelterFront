@@ -1,5 +1,5 @@
 <div class="animal-card">
-  <img class="animal-image" src="data:image/jpeg;base64,{{infoAboutPet.photo}}" alt="Photo">
+  <img class="animal-image" [src]="'http://localhost:8080/' + infoAboutPet.photoPath" alt="Photo">
   <div class="animal-info">
     <h2>Id: {{infoAboutPet.id}}</h2>
     <h2>Кличка: {{ infoAboutPet.name }}</h2>
