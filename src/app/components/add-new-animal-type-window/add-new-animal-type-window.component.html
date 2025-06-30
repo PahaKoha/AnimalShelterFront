@@ -1,0 +1,12 @@
+<div class="main-container">
+  <form [formGroup]="newAnimalTypeFormGroup">
+    <div class="add-new-animal-type-window">
+      <h1>Добавьте вид зверушки</h1>
+      <input formControlName="name" placeholder="Название вида">
+      <div class="button-group">
+        <button (click)="addNewAnimalType()">Добавить</button>
+        <button (click)="changeAddNewShelterWindowState()">Закрыть</button>
+      </div>
+    </div>
+  </form>
+</div>

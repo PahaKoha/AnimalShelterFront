@@ -1,4 +1,11 @@
 <h1 class=elegant-title>Зверушки из всех приютов</h1>
+
+<div class="button-group">
+  <button (click)="sortAnimalsBy('name')">Отсортировать по имени животного</button>
+  <button (click)="sortAnimalsBy('description')">Отсортировать по описанию</button>
+  <button (click)="sortAnimalsBy('animalType.name')">Отсортировать по типу зверушки</button>
+  <button (click)="sortAnimalsBy('shelter.name')">Отсортировать по названию приюта</button>
+</div>
 <div class="main-container">
   <app-info-about-pet-window *ngFor="let animal of animals" [infoAboutPet]="animal"></app-info-about-pet-window>
 </div>

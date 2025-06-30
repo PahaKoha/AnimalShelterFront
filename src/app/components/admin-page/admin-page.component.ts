@@ -6,12 +6,13 @@ import {DeletePetWindowComponent} from "../delete-pet-window/delete-pet-window.c
 import {DeletePetWindowService} from "../../services/delete-pet-window.service";
 import {InfoAboutPetForAdminComponent} from "../info-about-pet-for-admin/info-about-pet-for-admin.component";
 import {AdminPageService} from "../../services/admin-page.service";
-import {InfoAboutPetWindowComponent} from "../info-about-pet-window/info-about-pet-window.component";
-import {UpdatePetWindowComponent} from "../update-pet-window/update-pet-window.component";
 import {AddNewShelterWindowService} from "../../services/add-new-shelter-window.service";
 import {AddNewShelterWindowComponent} from "../add-new-shelter-window/add-new-shelter-window.component";
 import {AnimalService} from "../../services/animal.service";
 import {ShelterService} from "../../services/shelter.service";
+import {AddNewAnimalTypeWindowService} from "../../services/add-new-animal-type-window.service";
+import {AddNewAnimalTypeWindowComponent} from "../add-new-animal-type-window/add-new-animal-type-window.component";
+import {AnimalTypeService} from "../../services/animal-type.service";
 
 @Component({
   selector: 'app-admin-page',
@@ -21,10 +22,9 @@ import {ShelterService} from "../../services/shelter.service";
     NgIf,
     DeletePetWindowComponent,
     InfoAboutPetForAdminComponent,
-    InfoAboutPetWindowComponent,
     NgForOf,
-    UpdatePetWindowComponent,
-    AddNewShelterWindowComponent
+    AddNewShelterWindowComponent,
+    AddNewAnimalTypeWindowComponent
   ],
   templateUrl: './admin-page.component.html',
   styleUrl: './admin-page.component.css'
@@ -32,10 +32,12 @@ import {ShelterService} from "../../services/shelter.service";
 export class AdminPageComponent implements OnInit {
   animals: any[] = [];
   shelters: any[] = [];
+  animalTypes: any[] = [];
 
   constructor(private createNewPetWindowService: CreateNewPetWindowService, private deletePetWindow: DeletePetWindowService,
               private adminPageService: AdminPageService, private addNewShelterWindowService: AddNewShelterWindowService,
-              private animalService: AnimalService, private shelterService: ShelterService) {
+              private animalService: AnimalService, private shelterService: ShelterService,
+              private animalTypeService: AnimalTypeService, private addNewAnimalTypeWindowService: AddNewAnimalTypeWindowService) {
   }
 
   isDeletePetWindowOpen(): boolean {
@@ -62,6 +64,25 @@ export class AdminPageComponent implements OnInit {
     this.addNewShelterWindowService.changeWindowState();
   }
 
+  isAddNewAnimalTypeWindowOpen(): boolean {
+    return this.addNewAnimalTypeWindowService.isWindowOpen();
+  }
+
+  changeAddAnimalTypeWindowState(): void {
+    this.addNewAnimalTypeWindowService.changeWindowState();
+  }
+
+  sortAnimalsBy(path: string) {
+    const getValue = (obj: any, path: string) =>
+      path.split('.').reduce((o, key) => (o ? o[key] : undefined), obj);
+
+    this.animals = [...this.animals].sort((a, b) => {
+      const valA = getValue(a, path);
+      const valB = getValue(b, path);
+      return valA.localeCompare(valB);
+    });
+  }
+
   ngOnInit(): void {
     this.animalService.animals$.subscribe({
       next: (animals) => {
@@ -75,6 +96,15 @@ export class AdminPageComponent implements OnInit {
     this.shelterService.shelters$.subscribe({
       next: (shelters) => {
         this.shelters = shelters;
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+
+    this.animalTypeService.animalTypes$.subscribe({
+      next: (animalTyp) => {
+        this.animalTypes = animalTyp;
       },
       error: (error) => {
         console.log(error);

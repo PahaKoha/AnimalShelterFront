@@ -19,6 +19,10 @@
         <select formControlName="shelterId" id="shelter">
           <option *ngFor="let shelter of shelters" [value]="shelter.id">{{ shelter.name }}</option>
         </select>
+        <label for="animalType">Выберите вид зверушки:</label>
+        <select formControlName="animalTypeId" id="animalType">
+          <option *ngFor="let animalType of animalTypes" [value]="animalType.id">{{ animalType.name }}</option>
+        </select>
       </div>
       <div class="button-group">
         <button type="button" (click)="createNewPet()">Добавить</button>

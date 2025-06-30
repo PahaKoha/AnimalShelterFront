@@ -6,7 +6,7 @@ import {environment} from "../../environments/environments";
 @Injectable({
   providedIn: 'root'
 })
-export class AddNewShelterWindowService {
+export class AddNewAnimalTypeWindowService {
 
   private windowState: boolean = false;
 
@@ -21,7 +21,7 @@ export class AddNewShelterWindowService {
     this.windowState = !this.windowState;
   }
 
-  createNewShelter(formData: FormData): Observable<any> {
-    return this.httpClient.put(`${environment.backendUrl}/api/add-new-shelter`, formData);
+  createNewAnimalType(formData: FormData): Observable<any> {
+    return this.httpClient.put(`${environment.backendUrl}/api/add-new-animal-type`, formData);
   }
 }

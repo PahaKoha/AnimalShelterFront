@@ -26,8 +26,4 @@ export class AnimalService {
         }
       });
   }
-
-  // updateAnimals(newAnimals: any[]): void {
-  //   this.animalsSubject.next(newAnimals);
-  // }
 }

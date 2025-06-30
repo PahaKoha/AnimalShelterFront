@@ -21,10 +21,22 @@ export class MainPageComponent implements OnInit{
   constructor(private mainPageService: MainPageService, private animalService: AnimalService) {
   }
 
+  sortAnimalsBy(path: string) {
+    const getValue = (obj: any, path: string) =>
+      path.split('.').reduce((o, key) => (o ? o[key] : undefined), obj);
+
+    this.animals = [...this.animals].sort((a, b) => {
+      const valA = getValue(a, path);
+      const valB = getValue(b, path);
+      return valA.localeCompare(valB);
+    });
+  }
+
   ngOnInit(): void {
     this.animalService.animals$.subscribe({
       next: (animals) => {
         this.animals = animals;
+        console.log(this.animals);
       },
       error: (error) => {
         console.log(error);

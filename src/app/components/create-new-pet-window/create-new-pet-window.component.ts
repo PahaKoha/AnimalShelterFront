@@ -17,6 +17,7 @@ import {NgFor, NgIf, NgOptimizedImage} from "@angular/common";
 })
 export class CreateNewPetWindowComponent implements OnInit {
   @Input() shelters: any[] = [];
+  @Input() animalTypes: any[] = [];
 
   constructor(private createNewPetWindowService: CreateNewPetWindowService, private formBuilder: FormBuilder) {
   }
@@ -32,7 +33,8 @@ export class CreateNewPetWindowComponent implements OnInit {
       weight: ['', Validators.required],
       height: ['', Validators.required],
       description: ['', Validators.required],
-      shelterId: ['', Validators.required]
+      shelterId: ['', Validators.required],
+      animalTypeId: ['', Validators.required]
     });
   }
 

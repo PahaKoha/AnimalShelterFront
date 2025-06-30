@@ -31,7 +31,7 @@ export class AddNewShelterWindowComponent implements OnInit {
   }
 
   addNewShelter() : void {
-    this.addNewShelterWindowService.createNewPet(this.newShelterFormGroup.value).subscribe({
+    this.addNewShelterWindowService.createNewShelter(this.newShelterFormGroup.value).subscribe({
       next: (response) => {
         location.reload();
         console.log(response.message);
